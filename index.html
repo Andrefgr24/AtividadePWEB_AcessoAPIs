@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Livros</title>
+</head>
+
+<body>
+    <h1>Resultado da Pesquisa de Livros</h1>
+    <button onclick="buscarLivros()">Buscar Livros</button>
+    <table id="tabelaLivros">
+        <thead>
+            <tr>
+                <th>Nome do Livro</th>
+                <th>Autor</th>
+                <th>Ano da Publicação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linhas da tabela serão adicionadas aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        async function buscarLivros() {
+            const resposta = await fetch('https://openlibrary.org/search.json?q=programming');
+            const dados = await resposta.json();
+
+            const tbody = document.getElementById('tabelaLivros').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Limpa a tabela antes de adicionar novos resultados
+
+            dados.docs.forEach(livro => {
+                const linha = tbody.insertRow();
+                const celulaTitulo = linha.insertCell();
+                celulaTitulo.textContent = livro.title || 'Não disponível';
+
+                const celulaAutor = linha.insertCell();
+                celulaAutor.textContent = (livro.author_name ? livro.author_name.join(', ') : 'Desconhecido');
+
+                const celulaAno = linha.insertCell();
+                celulaAno.textContent = livro.first_publish_year || 'Desconhecido';
+            });
+        }
+    </script>
+</body>
+
+</html>
