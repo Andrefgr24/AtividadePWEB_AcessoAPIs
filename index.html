@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt">
 
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Livros</title>
+
+    <title>Galeria de Imagens da NASA</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1>Resultado da Pesquisa de Livros</h1>
-    <button onclick="buscarLivros()">Buscar Livros</button>
-    <table id="tabelaLivros">
-        <thead>
-            <tr>
-                <th>Nome do Livro</th>
-                <th>Autor</th>
-                <th>Ano da Publicação</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Linhas da tabela serão adicionadas aqui -->
-        </tbody>
-    </table>
+    <h1>Galeria de Imagens da NASA</h1>
 
-    <script>
-        async function buscarLivros() {
-            const resposta = await fetch('https://openlibrary.org/search.json?q=programming');
-            const dados = await resposta.json();
+    <button id="refreshButton" class="refresh-button">Atualizar Imagens</button>
 
-            const tbody = document.getElementById('tabelaLivros').getElementsByTagName('tbody')[0];
-            tbody.innerHTML = ''; // Limpa a tabela antes de adicionar novos resultados
+    <!-- Container para os cards -->
+    <div class="card-container">
+        <!-- Cards que serão preenchidos dinamicamente -->
+        <div id="section1" class="card">
+            <img class="card-image" src="" alt="Imagem da NASA">
+            <h3 class="card-title">Título</h3>
+        </div>
+        <div id="section2" class="card">
+            <img class="card-image" src="" alt="Imagem da NASA">
+            <h3 class="card-title">Título</h3>
+        </div>
+        <div id="section3" class="card">
+            <img class="card-image" src="" alt="Imagem da NASA">
+            <h3 class="card-title">Título</h3>
+        </div>
+        <div id="section4" class="card">
+            <img class="card-image" src="" alt="Imagem da NASA">
+            <h3 class="card-title">Título</h3>
+        </div>
+    </div>
 
-            dados.docs.forEach(livro => {
-                const linha = tbody.insertRow();
-                const celulaTitulo = linha.insertCell();
-                celulaTitulo.textContent = livro.title || 'Não disponível';
-
-                const celulaAutor = linha.insertCell();
-                celulaAutor.textContent = (livro.author_name ? livro.author_name.join(', ') : 'Desconhecido');
-
-                const celulaAno = linha.insertCell();
-                celulaAno.textContent = livro.first_publish_year || 'Desconhecido';
-            });
-        }
-    </script>
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
 </body>
-
 </html>
