@@ -14,10 +14,8 @@ Este projeto é uma galeria de imagens da NASA que utiliza a API de Imagens da N
 - [Descrição](#descrição)
 - [Recursos Principais](#recursos-principais)
 - [API de Imagens da NASA](#api-de-imagens-da-nasa)
-- [Como Configurar o Projeto](#como-configurar-o-projeto)
-- [Como Usar](#como-usar)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Licença](#licença)
+
+
 
 ## Descrição
 
